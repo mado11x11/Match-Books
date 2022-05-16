@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<link th:href="@{/css/stylesheet.css}" rel="styleSheet">
+<title>Match-Books</title>
+</head>
+<body>
+  <div class="container">
+    <h1>一覧</h1>
+    <form action="/book/search" method="post">
+    <label>名前:<input class="input" type="text" name="name"></label><br>
+    <div><input class="search" type="submit" value="検索"/></div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>ジャンル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="book:${bookList}" th:object="${book}">
+          <td th:text="*{id}"></td>
+          <td th:text="*{name}"></td>
+          <td th:text="*{genre}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
